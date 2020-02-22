@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 20200220155356) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer  "ingredients_id"
+    t.integer  "ingredient_id"
     t.integer  "recipe_id"
     t.integer  "amount"
     t.string   "measurement"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["ingredients_id"], name: "index_recipe_ingredients_on_ingredients_id", using: :btree
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id", using: :btree
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id", using: :btree
   end
 
@@ -39,6 +39,6 @@ ActiveRecord::Schema.define(version: 20200220155356) do
     t.datetime "updated_at",   null: false
   end
 
-  add_foreign_key "recipe_ingredients", "ingredients", column: "ingredients_id"
+  add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
 end
